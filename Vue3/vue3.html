@@ -1,0 +1,39 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js" SameSite="None"></script>
+
+<div id="app">
+  <h1>我是父组件，下面的的红字是子组件</h1>
+  <child-comp @click="handleClick" id="child-comp" class="attr"></child-comp>
+</div>
+
+<script type="module">
+  import ChildComp from './ChildComp.js';
+  const { createApp } = Vue;
+
+  createApp({
+    components: {
+      ChildComp
+    },
+    methods: {
+      handleClick(e) {
+        console.count(e);
+      }
+    },
+  }).mount('#app')
+</script>
+
+<style>
+  #app {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+  }
+
+  #child-comp {
+    color: red;
+    width: 600px;
+    height: 200px;
+    font-size: 60px;
+  }
+</style>

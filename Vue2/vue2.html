@@ -1,0 +1,47 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js" crossorigin></script>
+
+<div id="app">
+    <h1>{{content}}</h1>
+    <!-- 自定义事件与原生事件 .native修饰符 -->
+    <child-comp @click="handleClick" id="child-comp" class="attr" inline-template>
+        <!-- <div>我是子组件行内模板</div> -->
+    </child-comp>
+</div>
+
+<script type="module">
+    import ChildComp from './ChildComp.js';
+    new Vue({
+        el: '#app',
+        components: {
+            ChildComp
+        },
+        data() {
+            return {
+                content: "我是父组件，下面的的红字是子组件"
+            };
+        },
+        methods: {
+            handleClick(e) {
+                console.count(e);
+                // console.log(e);
+            }
+        },
+    });
+</script>
+
+<style>
+    #app {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column
+    }
+
+    #child-comp {
+        color: red;
+        width: 600px;
+        height: 200px;
+        font-size: 60px;
+    }
+</style>
